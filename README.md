@@ -119,7 +119,7 @@ This is  to crawl Data from Github  API of FB Public Repos , save it in SQLITE d
 		
 	
 ### TO  Run  the APP :-
-	1) python fb_git_crawler.py 
+	1) python monthly_contribution_api.py 
     --> Once its running, go  to  browser and use the mentioned API to  get required data
 		
 		
