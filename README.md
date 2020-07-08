@@ -14,14 +14,14 @@ This is  to crawl Data from Github  API of FB Public Repos , save it in SQLITE d
 	on the parameter u are passing  to an API.
 	3) The Data  is residing in  database 'facebook_github.db' already and is given to u in ZIP with tables and data in it.
 	4) The crawler i used took a very good  amount of time to fetch  all  data from facebook github API and insert it 
-	into database tables. 
-	THATS  WHY THE DB FILE WITH  PRE LOADED DATA HAS BEEN ATTACHED WITH  THIS FOLDER. 
+	     into database tables. 
+	      THATS  WHY THE DB FILE WITH  PRE LOADED DATA HAS BEEN ATTACHED WITH  THIS FOLDER. 
 	5) Now The API which calculate Monthly Data will simply hit database ,calculate and 
-	show results to browser (nothing else)
+	    show results to browser (nothing else)
 	6) There is an another API which will simply refresh the underlying database tables ,basically it will crawl 
-	Facebook github  API and look  for fresh records or commits across all its public  repositories,  
-	This  API  will take  some  good amount of time to  refresh  database tables ...
-	so if you  hit  it u  better go  get yourself  a coffeee and watch some friends series clips  .
+	    Facebook github  API and look  for fresh records or commits across all its public  repositories,  
+	    This  API  will take  some  good amount of time to  refresh  database tables ...
+	   so if you  hit  it u  better go  get yourself  a coffeee and watch some friends series clips  .
 	
 			
 	
