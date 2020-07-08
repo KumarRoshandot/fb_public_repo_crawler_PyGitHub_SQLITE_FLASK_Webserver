@@ -10,7 +10,7 @@ This is  to crawl Data from Github  API of FB Public Repos , save it in SQLITE d
 	
 	
 	1) okay  the  main thing is an API which  will show u the monthly contribution of FB public repos.
-	2) when u hit that  API in browser it will  data  in 2 formats ,  either  its JSON or Tabular view depending 
+	2) when u hit that  API in browser it will display data  in 2 formats ,either  its JSON or Tabular view depending 
 	on the parameter u are passing  to an API.
 	3) The Data  is residing in  database 'facebook_github.db' already and is given to u in ZIP with tables and data in it.
 	4) The crawler i used took a very good  amount of time to fetch  all  data from facebook github API and insert it 
