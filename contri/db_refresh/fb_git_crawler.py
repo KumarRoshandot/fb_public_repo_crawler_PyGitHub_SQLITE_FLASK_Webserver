@@ -36,8 +36,11 @@ def crawl_and_insert(org,param,conn):
                 # here it can be done better but i am fetching  the max(commit_date) from child table of that repo.
                 # So  that i can perform incremental load on child table,  when next refresh happens
                 cur.execute("select max(commit_dt) as last_commit_dt from public_repos_commits where repo_id = {}".format(i.id))
-                result = cur.fetchone()
-                last_commit_date = datetime.strptime(result[0], '%Y-%m-%d %H:%M:%S')
+                result = cur.fetchone()[0]
+                if result is None:
+                    last_commit_date = datetime.strptime('1900-01-01 00:00:00', '%Y-%m-%d %H:%M:%S')
+                else:
+                    last_commit_date = datetime.strptime(result, '%Y-%m-%d %H:%M:%S')
 
                 for j in i.get_commits(sha='master',since=last_commit_date):
                     # print(j.sha,j.commit.author.name,j.commit.author.date,j.committer.id,j.committer.name,j.committer.login)
