@@ -5,16 +5,6 @@ import sys, json, os
 from datetime import datetime
 from contri.db_refresh.db_table_utils import *
 
-user = 'KumarRoshandot'
-password = 'Generation@29'
-org_name = 'facebook'
-
-Client_ID = 'fcf535863e9e6e3daa1a'
-Client_Secret = '5c480bae5d597a7e232b5a853bc974f9981a7d51'
-
-#public_repos_contributors_json = "temp/public_repos_contributors.json"
-#public_repos_commits = "temp/public_repos_commits.json"
-
 
 def crawl_and_insert(org,param,conn):
     print(param)
@@ -62,10 +52,20 @@ def crawl_and_insert(org,param,conn):
         return 'EXCEPTION OCCURED :- '+str(e)
 
 
+# Below is just for testing  ,if i want to run this program from shell
+'''
 if __name__ == "__main__":
     #pool = Pool(os.cpu_count())
     # get connection to db
     try:
+
+        user = 'My Github Username'
+        password = 'My Github Password'
+        org_name = 'facebook'
+
+        Client_ID = 'Github OAuth Client Id'
+        Client_Secret = 'Github OAuth Client Secret Key'
+       
         user_credentials = {'user':user,'password':password,'type':'login'}
         user_app_token = {'client_id': Client_ID, 'client_secret': Client_Secret, 'type': 'token'}
         conn = create_db_tables()
@@ -73,5 +73,5 @@ if __name__ == "__main__":
         print(response)
     except Exception as e:
         print(str(e))
-
+'''
 
