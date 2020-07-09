@@ -1,6 +1,18 @@
 # fb_public_repo_crawler_PyGitHub_SQLITE_FLASK
-This is  to crawl Data from Github  API of FB Public Repos , save it in SQLITE db and Build an WebServer Using Flask to  show monthly contribution
-
+## This is  to crawl Data from Github  API of FB Public Repos , save it in SQLITE db and Build an WebServer Using Flask to show monthly contribution
+	
+	─────────────────────
+	│GitHUb Facebook API│
+	─────────────────────
+	        │
+		│
+	    Crawler(PyGitHUb)
+		│
+		│
+		↓
+	 ─────────────────────────                  ────────────────────           ────────────────
+	│facebook_github.db(SQLIte)│──────────────>│Webserver(Flask APP)│────────>│Browser(API URL)│
+	 ──────────────────────────                 ────────────────────           ────────────────
 
 
 	Okay here it buddy boy ,you hide my cloths i am wearning everything u own.(Friends Series--Jooey , chandler)
@@ -32,8 +44,23 @@ This is  to crawl Data from Github  API of FB Public Repos , save it in SQLITE d
 	1) I have  worked it using pycharm tool and on windows machine.
 		--> Install Python (better 3+)
 		--> Pip install Flask, PyGitHub
-	2) Extract 'contri.zip' in one location (for e.g..  c:\contri)
+	2) Download this ZIP and Extract to 'contri' folder to one location (for e.g..  c:\contri)
+	
 	3) Under this folder you  will see follwing  structure 
+	   ├── contri
+	         ├── custom_api
+	         │    ├── templates
+	         │    │       ├──monthly_contri.html
+	         │    ├── __init__.py
+	         │    └── monthly_contribution_api.py
+	         ├── db_refresh
+	           ├── db
+	           │   ├──facebook_github.db   ( Now this is zipped ,so make sure u extract it and place it like this)
+	           ├── __init__.py
+	           ├── fb_git_crawler.py
+	           └── db_table_utils.py
+	
+	
 	4) Sub folder (db_refresh):-
 		a) fb_git_crawler.py 
 			--> This is the crawler program which will fetch data from  github API of Facebook organization.
