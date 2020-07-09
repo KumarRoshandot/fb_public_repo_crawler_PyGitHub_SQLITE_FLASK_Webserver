@@ -15,7 +15,7 @@
 	 ──────────────────────────                 ────────────────────           ────────────────
 
 
-	Okay here it buddy boy ,you hide my cloths i am wearning everything u own.(Friends Series--Jooey , chandler)
+	Okay here it is buddy boy ,you hide my cloths i am wearning everything u own.(Friends Series--Jooey , chandler)
 
 	
 	well not everyting i  have  missed  out a lot of things ,  but lets see 
@@ -25,16 +25,16 @@
 	2) when u hit that  API in browser it will display data  in 2 formats ,either  its JSON or Tabular view 
 	   depending on the parameter u are passing  to an API.
 	3) The Data  is residing in  database 'facebook_github.db' already and is given to u in ZIP with tables 
-	    and data in it.
+	    and data preloaded in it.
 	4) The crawler i used took a very good  amount of time to fetch  all  data from facebook github API 
-	    and insert it into database tables. 
-	    THATS  WHY THE DB FILE WITH  PRE LOADED DATA HAS BEEN ATTACHED WITH  THIS FOLDER. 
+	    and inserting it into database tables. 
+	    THATS  WHY THE DB FILE WITH  PRE LOADED DATA HAS BEEN ATTACHED WITH THIS FOLDER. 
 	5) Now The API which calculate Monthly Data will simply hit database ,calculate and 
 	    show results to browser (nothing else)
 	6) There is an another API which will simply refresh the underlying database tables ,basically it will 
 	   crawl Facebook github  API and look  for fresh records or commits across all its public  repositories,  
 	    This  API  will take  some  good amount of time to  refresh  database tables ...
-	   so if you  hit  it u  better go  get yourself  a coffeee and watch some friends series clips  .
+	   so if you  hit  it u  better go  get yourself a coffeee and watch some friends series clips.
 	
 			
 	
@@ -44,9 +44,9 @@
 	1) I have  worked it using pycharm tool and on windows machine.
 		--> Install Python (better 3+)
 		--> Pip install Flask, PyGitHub
-	2) Download this ZIP and Extract to 'contri' folder to one location (for e.g..  c:\contri)
+	2) Download this project ZIP and Extract till 'contri' folder to one location (for e.g..  c:\contri)
 	
-	3) Under this folder you  will see follwing  structure 
+	3) Under this folder you  will see follwing  structure ,this is how u extract and keep it
 	   ├── contri
 	         ├── custom_api
 	         │    ├── templates
@@ -64,16 +64,17 @@
 	4) Sub folder (db_refresh):-
 		a) fb_git_crawler.py 
 			--> This is the crawler program which will fetch data from  github API of Facebook organization.
-			--> I have used Github library  for  this 'github' , this is awesome .
+			--> I have used PyGitHub library  for  this 'github' API , this is awesome .
 			--> You will ask why not use simple 'request' library  from python ,
-			     well i can use it but i came across this 'github' library which  is so simple  to use and 
-			     comes with so many functionalites which can server my purpose .
-			--> whole  thing is how i can  use less lines of code and fulfill my requirement.
-			--> so 'github' , all i have to  do is i pass github registered username and password OR github 
-			    Oth-APP Client_ID and ACCESS_KEY (Token combo) and wallah ...i can fetch data .
-			--> now i just have to fetch organization public repos information and how few details of all  
+			     well i can use it but i came across this 'PyGitHub' library which  is so simple  to use and 
+			     comes with so many functionalites which can serve my purpose .
+			--> whole thing is how i can  use less lines of code,good parsing of data and fulfill my requirement.
+			--> so 'PyGitHub' , all i have to  do is i pass github registered username and password OR github 
+			    OAuth-APP Client_ID and ACCESS_KEY (Token combo) and wallah ...i can fetch data .
+			--> now i just have to fetch organization public repos information and some few details of all  
 			    the commits  that has happened on all  that  public repositories.
 			--> once i have the required columns , i am inserting  those information in Database tables.
+			--> Also If i am calling the API which  refresh data ,then it does is only load incremental data.
 			--> Database information is  next
 		
 		b) db_table_utils.py
@@ -86,13 +87,13 @@
 			--> Within this database i have made 2 tables , 
 			     one is master and other is child (with Primary and foreign  key relationship.)
 			--> Master Table (public_repos)
-					--> This is table which will have  following columns 
+				--> This is table which will have only public Repositories info  
 					--> id ( The unique  ID for one repository, PRIMARY  KEY)
 					--> name ( The name of that Repository)
 					--> full_name  ( Kind of Full name , value begins with organization)
 					--> begin_date ( The  creation  date  of  that repository)
 			--> Child Table (public_repos_commits)
-					--> This is table which will have  following columns 
+				--> This is table which will have commits that  has happened  so far 
 					--> commit_id ( The unique  Commit  ID when one  commit happens at repo, PRIMARY  KEY)
 					--> repo_id ( The Repo_id of that public  repository , FORIEGN KEY to Master table  (ID))
 					--> author_name  ( The person/user who made the commit)
@@ -100,12 +101,13 @@
 	
 	4) Sub folder (custom_api):-
 		a) monthly_contribution_api.py
-			--> Place  where i have  build a APP using Flask Library.
+			--> Place  where i have  build an APP using Flask Library.
 			--> 2 action  that i want it to perform 
 				--> one calculate monthly  contribution  data  and  return result
 				--> another one  is just optional  thing ,  
-				    if i want to refresh data in tables then it can just do  that.
-			--> Both action can  be controlled by API it has generated , by passing  relevant parameters
+				     if i want to refresh data in tables then it can just do  that.
+				     
+			--> Both actions can  be controlled by API it has generated , by passing relevant parameters
 			--> for e.g..  http://127.0.0.1:5000/stats can give u ur monthly data 
 			       But http://127.0.0.1:5000/refreshdb will refresh database 
 						 (synchronize with fresh commits that has happened newly)
@@ -118,7 +120,7 @@
 					This will  just  display the Data  in a JSON Format with repository name ,months ,count 
 					
 					2) http://127.0.0.1:5000/stats?type=table
-					--> Now this is just a additional parameter if u specify then give this value as table', 
+					--> Now this is just a additional parameter if u specify then give this value as 'table', 
 					    now i have set only table view type.we can also have like chart view but we can do 
 							that later.
 					--> So you will get  the  entire information in tablular  view.
@@ -134,8 +136,9 @@
 						
 					--> This will hit  the  program made to crawl API of facebook public repositories ,
 					    check for fresh commits and insert that to database tables.
-					--> Now  Github API to access You need to have  a username and password, 
+					--> Now for Github API to access You need to have  a username and password, 
 					    so these  can be passed  to the above API made for username and password.
+					    
 					--> Github also has this flexiblty to  make your own OAuth Apps where you will 
 					    get your own  Client ID and Client Secret key , so pass this to the  
 							above API made for OAuth API.
@@ -146,7 +149,7 @@
 	
 		
 	
-### TO  Run  the APP :-
+### TO  Run  the Webserver APP :-
 	1) python monthly_contribution_api.py 
     --> Once its running, go  to  browser and use the mentioned API to  get required data
 		
@@ -155,7 +158,7 @@
 	--> The Crawler  took a considerable amount of time to fetch data and insert into tables.
 	--> We can parallelize it using Multiprocessing Pool to fasten the crawling.
 	--> The API which shows monthly results is like a complete snapshot displayed in browser.
-		--> This could  be  made like first  page user will get all public repositories.
+		--> This could  be  made something like from first page user will get all public repositories.
 		--> when user click on any repository , it will  navigate to another page showing its monthly contribution.
 	--> The Report could have been made  monthly column  wise , i could have  used pivot  approach or another approach.
 	 
