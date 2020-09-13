@@ -14,11 +14,6 @@
 	│facebook_github.db(SQLIte)│──────────────>│Webserver(Flask APP)│────────>│Browser(API URL)│
 	 ──────────────────────────                 ────────────────────           ────────────────
 
-
-	Okay here it is buddy boy ,you hide my cloths i am wearning everything u own.(Friends Series--Jooey , chandler)
-
-	
-	well not everyting i  have  missed  out a lot of things ,  but lets see 
 	
 	
 	1) okay  the  main thing is an API which  will show u the monthly contribution of FB public repos.
